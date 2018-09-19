@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $document  = new \DiDom\Document(\App\Modules\ProgramTv\WP\Information::TVP1, true);
+
+    $a = new \App\Modules\ProgramTv\WP\ParserStation($document);
+    $b = $a->getDateTimeBetween(\Carbon\Carbon::today(), \Carbon\Carbon::now());
+    dd($b);
+
 });
